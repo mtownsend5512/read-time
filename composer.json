@@ -1,0 +1,50 @@
+{
+    "name": "mtownsend/read-time",
+    "description": "A PHP package to show users how long it takes to read content.",
+    "keywords": [
+        "read",
+        "time",
+        "minutes",
+        "reading",
+        "content",
+        "medium",
+        "min",
+        "blog",
+        "article"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark Townsend",
+            "email": "mtownsend5512@gmail.com",
+            "role": "Developer"
+        }
+    ],
+	"autoload": {
+        "psr-4": {
+            "Mtownsend\\ReadTime\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "require": {
+        "php": "~7.0"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "^6.4"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mtownsend\\ReadTime\\Test\\": "tests/"
+        }
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+            "Mtownsend\\ReadTime\\Providers\\ReadTimeServiceProvider"
+        ]
+      }
+    },
+    "minimum-stability": "stable"
+}
