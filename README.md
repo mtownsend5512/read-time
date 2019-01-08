@@ -146,7 +146,7 @@ Manually set the translation text for the class to use. If no key is passed it w
 
 ```php
 [
-	'reads_left_to_right' => true,
+    'reads_left_to_right' => true,
     'min' => 'min',
     'minute' => 'minute',
     'sec' => 'sec',
@@ -199,23 +199,23 @@ But you are still free to customize the ReadTime class settings on the fly using
 
 ````
 {{ read_time([
-		'content' => $content,
-		// or
-		// 'content' => [$content, $moreContent],
-		'omit_seconds' => true,
-		'time_only' => false,
-		'abbreviated' => true,
-		'words_per_minute' => 230,
-		'ltr' => true,
-		'translation' => [
-			'reads_left_to_right' => true,
-		    'min' => 'min',
-		    'minute' => 'minute',
-		    'sec' => 'sec',
-		    'second' => 'second',
-		    'read' => 'read'
-		]
-	]) }}
+    'content' => $content,
+    // or
+    // 'content' => [$content, $moreContent],
+    'omit_seconds' => true,
+    'time_only' => false,
+    'abbreviated' => true,
+    'words_per_minute' => 230,
+    'ltr' => true,
+    'translation' => [
+        'reads_left_to_right' => true,
+        'min' => 'min',
+        'minute' => 'minute',
+        'sec' => 'sec',
+        'second' => 'second',
+        'read' => 'read'
+    ]
+]) }}
 ````
 
 ## Purpose
