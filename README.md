@@ -1,6 +1,6 @@
 A PHP package to show users how long it takes to read content.
 
-<p style="text-align: center;">
+<p align="center">
 <img src="https://i.imgur.com/41dLat4.png">
 </p>
 
