@@ -93,7 +93,7 @@ class ReadTime
     /**
      * Abbreviate the minutes/seconds
      *
-     * @param  boolean $abbreviated
+     * @param  bool $abbreviated
      * @return Mtownsend\ReadTime\ReadTime
      */
     public function abbreviated($abbreviated = true)
@@ -213,7 +213,7 @@ class ReadTime
     /**
      * Get the translation array or specific key
      *
-     * @param  string $key The translation key
+     * @param  string|null $key The translation key
      * @return mixed array if no key is passed, or string if existing key is passed
      */
     public function getTranslation($key = null)
@@ -289,7 +289,7 @@ class ReadTime
     /**
      * Reverse the words in a string
      *
-     * @param  [string $string
+     * @param  string $string
      * @return string
      */
     protected function reverseWords($string): string
