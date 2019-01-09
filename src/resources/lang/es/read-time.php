@@ -1,7 +1,7 @@
 <?php
 
 return [
-	'reads_left_to_right' => true,
+    'reads_left_to_right' => true,
     'min' => 'min',
     'minute' => 'minuto',
     'sec' => 'seg',
