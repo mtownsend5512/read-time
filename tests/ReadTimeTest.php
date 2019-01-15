@@ -13,7 +13,7 @@ class ReadTimeTest extends TestCase
     /** @test string */
     protected $sidebarContent;
 
-    public function setUp()
+    protected function setUp()
     {
     	$this->mainContent = <<<HTML
     	<h2>Chicken Enchiladas</h2>
@@ -76,35 +76,35 @@ HTML;
     public function can_output_read_time()
     {
     	$result = (new ReadTime($this->mainContent))->get();
-        $this->assertEquals($result, '1 minute read');
+        $this->assertSame($result, '1 minute read');
     }
 
     /** @test */
     public function can_accept_array_of_content()
     {
     	$result = (new ReadTime([$this->mainContent, $this->sidebarContent]))->get();
-        $this->assertEquals($result, '1 minute read');
+        $this->assertSame($result, '1 minute read');
     }
 
     /** @test */
     public function can_change_wpm()
     {
     	$result = (new ReadTime($this->mainContent))->wpm(150)->toArray();
-        $this->assertEquals($result['words_per_minute'], 150);
+        $this->assertSame($result['words_per_minute'], 150);
     }
 
     /** @test */
     public function can_set_time_only()
     {
     	$result = (new ReadTime($this->mainContent))->timeOnly(true)->toArray();
-        $this->assertEquals($result['time_only'], true);
+        $this->assertTrue($result['time_only']);
     }
 
     /** @test */
     public function can_allow_seconds()
     {
     	$result = (new ReadTime($this->mainContent))->omitSeconds(false)->toArray();
-        $this->assertEquals($result['omit_seconds'], false);
+        $this->assertFalse($result['omit_seconds']);
     }
 
     /** @test */
@@ -118,7 +118,7 @@ HTML;
 		    'read' => 'leer'
     	];
     	$result = (new ReadTime($this->mainContent))->setTranslation($spanish)->getTranslation('read');
-        $this->assertEquals($result, 'leer');
+        $this->assertSame($result, 'leer');
     }
 
     /** @test */
@@ -132,14 +132,14 @@ HTML;
     public function can_get_translation_key()
     {
 		$result = (new ReadTime($this->mainContent))->getTranslation('minute');
-		$this->assertEquals($result, 'minute');
+		$this->assertSame($result, 'minute');
     }
 
     /** @test */
     public function can_read_right_to_left()
     {
     	$result = (new ReadTime($this->mainContent))->omitSeconds(false)->rtl()->get();
-        $this->assertEquals($result, 'read second 10 minute 1');
+        $this->assertSame($result, 'read second 10 minute 1');
     }
 
     /** @test */
@@ -174,6 +174,6 @@ HTML;
     public function can_handle_large_content()
     {
         $result = (new ReadTime(str_repeat($this->mainContent, 50)))->get();
-        $this->assertEquals($result, '58 minute read');
+        $this->assertSame($result, '58 minute read');
     }
 }
