@@ -141,7 +141,7 @@ class ReadTime
      */
     protected function cleanReadTimeString($string): string
     {
-        return trim(str_replace('  ', ' ', $string));
+        return trim(preg_replace('/\s+/u', ' ', $string));
     }
 
     /**
