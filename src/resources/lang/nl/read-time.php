@@ -2,9 +2,9 @@
 
 return [
     'reads_left_to_right' => true,
-    'min' => 'min.',
+    'min' => 'min',
     'minute' => 'minuut',
-    'sec' => 'sec.',
+    'sec' => 'sec',
     'second' => 'seconde',
     'read' => 'leestijd'
 ];
