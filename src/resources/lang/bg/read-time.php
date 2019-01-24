@@ -2,9 +2,9 @@
 
 return [
     'reads_left_to_right' => true,
-    'min' => 'мин.',
+    'min' => 'мин',
     'minute' => 'минута',
-    'sec' => 'сек.',
+    'sec' => 'сек',
     'second' => 'секунда',
     'read' => 'четене'
 ];
