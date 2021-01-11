@@ -8,15 +8,11 @@ A PHP package to show users how long it takes to read content.
 
 Install via composer:
 
-For PHP version 7.4+
+
 ```
-composer require mtownsend/read-time "^2"
+composer require mtownsend/read-time
 ```
 
-For PHP version less than 7.4
-```
-composer require mtownsend/read-time "^1.1"
-```
 
 *This package is designed to work with any PHP 7.0+ application but has special support for Laravel.*
 
