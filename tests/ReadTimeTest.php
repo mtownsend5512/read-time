@@ -13,9 +13,9 @@ class ReadTimeTest extends TestCase
     /** @test string */
     protected $sidebarContent;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-    	$this->mainContent = <<<HTML
+        $this->mainContent    = <<<HTML
     	<h2>Chicken Enchiladas</h2>
     	<small>By Leroy Jenkins</small>
     	<p>
@@ -42,7 +42,7 @@ class ReadTimeTest extends TestCase
     		</li>
     	</ol>
 HTML;
-    	$this->sidebarContent = <<<HTML
+        $this->sidebarContent = <<<HTML
     	<ul>
     		<li>
     			<p>
@@ -75,99 +75,99 @@ HTML;
     /** @test */
     public function can_output_read_time()
     {
-    	$result = (new ReadTime($this->mainContent))->get();
+        $result = (new ReadTime($this->mainContent))->get();
         $this->assertSame($result, '1 minute read');
     }
 
     /** @test */
     public function can_accept_array_of_content()
     {
-    	$result = (new ReadTime([$this->mainContent, $this->sidebarContent]))->get();
+        $result = (new ReadTime([$this->mainContent, $this->sidebarContent]))->get();
         $this->assertSame($result, '1 minute read');
     }
 
     /** @test */
     public function can_change_wpm()
     {
-    	$result = (new ReadTime($this->mainContent))->wpm(150)->toArray();
+        $result = (new ReadTime($this->mainContent))->wpm(150)->toArray();
         $this->assertSame($result['words_per_minute'], 150);
     }
 
     /** @test */
     public function can_set_time_only()
     {
-    	$result = (new ReadTime($this->mainContent))->timeOnly(true)->toArray();
+        $result = (new ReadTime($this->mainContent))->timeOnly(true)->toArray();
         $this->assertTrue($result['time_only']);
     }
 
     /** @test */
     public function can_allow_seconds()
     {
-    	$result = (new ReadTime($this->mainContent))->omitSeconds(false)->toArray();
+        $result = (new ReadTime($this->mainContent))->omitSeconds(false)->toArray();
         $this->assertFalse($result['omit_seconds']);
     }
 
     /** @test */
     public function can_change_translation()
     {
-    	$spanish = [
-		    'min' => 'min',
-		    'minute' => 'minuto',
-		    'sec' => 'seg',
-		    'second' => 'segundo',
-		    'read' => 'leer'
-    	];
-    	$result = (new ReadTime($this->mainContent))->setTranslation($spanish)->getTranslation('read');
+        $spanish = [
+            'min'    => 'min',
+            'minute' => 'minuto',
+            'sec'    => 'seg',
+            'second' => 'segundo',
+            'read'   => 'leer'
+        ];
+        $result  = (new ReadTime($this->mainContent))->setTranslation($spanish)->getTranslation('read');
         $this->assertSame($result, 'leer');
     }
 
     /** @test */
     public function can_get_translation_array()
     {
-		$result = (new ReadTime($this->mainContent))->getTranslation();
-		$this->assertInternalType('array', $result);
+        $result = (new ReadTime($this->mainContent))->getTranslation();
+        $this->assertIsArray($result);
     }
 
     /** @test */
     public function can_get_translation_key()
     {
-		$result = (new ReadTime($this->mainContent))->getTranslation('minute');
-		$this->assertSame($result, 'minute');
+        $result = (new ReadTime($this->mainContent))->getTranslation('minute');
+        $this->assertSame($result, 'minute');
     }
 
     /** @test */
     public function can_read_right_to_left()
     {
-    	$result = (new ReadTime($this->mainContent))->omitSeconds(false)->rtl()->get();
+        $result = (new ReadTime($this->mainContent))->omitSeconds(false)->rtl()->get();
         $this->assertSame($result, 'read second 10 minute 1');
     }
 
     /** @test */
     public function can_output_array()
     {
-		$result = (new ReadTime($this->mainContent))->toArray();
-		$this->assertInternalType('array', $result);
+        $result = (new ReadTime($this->mainContent))->toArray();
+        $this->assertIsArray($result);
     }
 
     /** @test */
     public function can_output_json()
     {
-		$result = (new ReadTime($this->mainContent))->toJson();
-		$this->assertInternalType('string', $result);
+        $result = (new ReadTime($this->mainContent))->toJson();
+        $this->assertJson($result);
     }
 
     /** @test */
     public function can_invoke_class_for_read_time()
     {
-    	$result = new ReadTime($this->mainContent);
-    	$this->assertInternalType('string', $result());
+        $result = new ReadTime($this->mainContent);
+        $this->assertIsString($result());
     }
 
     /** @test */
     public function can_cast_as_string_for_read_time()
     {
-    	$result = new ReadTime($this->mainContent);
-    	$this->assertInternalType('string', (string) $result);
+        $result = new ReadTime($this->mainContent);
+        $this->assertIsString((string)$result);
     }
 
     /** @test */
